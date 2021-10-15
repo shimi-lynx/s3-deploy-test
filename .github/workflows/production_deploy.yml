@@ -1,9 +1,8 @@
 name: Build HTML on S3
 on:
-  push:
+  pull_request:
     branches:
-      - 'feature/**'
-      - 'fix/**'
+      - 'master'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,8 +19,4 @@ jobs:
       
       - name: Copy file to the development website with the AWS CLI
         run: |
-          aws s3 sync --delete \
-          --exclude '.git*' \
-          --exclude 'test.html' \
-          ./ \
-          s3://dev-shimi-lynx-s3-deploy-test
+          aws s3 sync --delete ./ s3://shimi-lynx-s3-deploy-test
