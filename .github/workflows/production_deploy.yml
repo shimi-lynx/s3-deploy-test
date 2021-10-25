@@ -5,7 +5,7 @@ on:
       - 'master'
     types: [closed]
 jobs:
-  build:
+  prod-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
